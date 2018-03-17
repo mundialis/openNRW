@@ -1,8 +1,31 @@
 #!/bin/sh
 
-# MN 2017
-# Script to import openNRW DGM XYZ data as regular gridded DGMs
-# processes all DGM-ZIPs in a directory
+############################################################################
+#
+# NAME:         r.in.opennrw_dgm.sh
+#
+# AUTHOR(S):    Markus Neteler, mundialis
+#
+# PURPOSE:      Script to import openNRW DGM XYZ data as regularly gridded DGMs.
+#               It loops over all DGM-ZIPs in a directory.
+#
+# COPYRIGHT:    (C) 2017 by Markus Neteler, mundialis
+#
+#  This program is free software; you can redistribute it and/or modify
+#  it under the terms of the GNU General Public License as published by
+#  the Free Software Foundation; either version 2 of the License, or
+#  (at your option) any later version.
+#
+#  This program is distributed in the hope that it will be useful,
+#  but WITHOUT ANY WARRANTY; without even the implied warranty of
+#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#  GNU General Public License for more details.
+#
+############################################################################
+
+#
+# openNRW data source:
+# https://www.opengeodata.nrw.de/produkte/geobasis/dgm/dgm1/
 
 ####
 # first time only, create location:
