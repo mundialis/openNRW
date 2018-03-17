@@ -4,7 +4,9 @@
 #
 # NAME:         r.in.opennrw_dgm.sh
 #
-# AUTHOR(S):    Markus Neteler, mundialis
+# AUTHOR(S):    Markus Neteler <neteler at mundialis.de>
+#               mundialis GmbH & Co. KG, Bonn
+#               https://www.mundialis.de
 #
 # PURPOSE:      Script to import openNRW DGM XYZ data as regularly gridded DGMs.
 #               It loops over all DGM-ZIPs in a directory.

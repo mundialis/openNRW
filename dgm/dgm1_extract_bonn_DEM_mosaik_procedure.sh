@@ -4,7 +4,9 @@
 #
 # NAME:         dgm1_extract_bonn_DEM_mosaik_procedure.sh
 #
-# AUTHOR(S):    Markus Neteler, mundialis
+# AUTHOR(S):    Markus Neteler <neteler at mundialis.de>
+#               mundialis GmbH & Co. KG, Bonn
+#               https://www.mundialis.de
 #
 # PURPOSE:      Script to mosaik all openNRW dgm1 tiles which cover the city of Bonn
 #

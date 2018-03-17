@@ -1,0 +1,41 @@
+Produkt	Dateibezeichnung	Dateiinhalt
+-------+-----------------------+---------------------------------------------------------------
+DGM1L	dgm1l-lpb_*_1_nw.xyz.gz	Bodenpunkte: Last-Pulse-Boden = Ergebnis der Filterung 
+	dgm1l-lpnb_*_1_nw.xyz.gz	Herausgefilterte Nichtbodenpunkte: Last-Pulse-Nichtboden 
+	dgm1l-lpub_*_1_nw.xyz.gz	Unterbodenpunkte: z.B. Kellerschacht (wenn vorhanden) 
+	dgm1l-ab_*_1_nw.xyz.gz	Aufgefüllte Bodenpunkte (wenn vorhanden) 
+	dgm1l-aw_*_1_nw.xyz.gz	Aufgefüllte Wasserflächen (wenn vorhanden) 
+	dgm1l-ag_*_1_nw.xyz.gz	Aufgefüllte Gebäudeflächen (wenn vorhanden) 
+	dgm1l-brk_*_1_nw.xyz.gz	Gefilterte Brückenpunkte oben (wenn vorhanden) 
+DOM1L	dom1l-fp_*_1_nw.xyz.gz	First-Pulse-Oberflächen-Daten 
+	dom1l-aw_*_1_nw.xyz.gz	Aufgefüllte Wasserflächen (wenn vorhanden) 
+DGM1	dgm1_*_2_nw.xyz.gz	Beinhaltet die Punktarten lpb + ab + aw + ag aus dem DGM1L
+DGM10	dgm10_*_2_nw.xyz	dargestellt in einem regelmäßigen Gitter.
+DGM25	dgm25_*_2_nw.xyz	Gitterweite = 1m (DGM1) - 10m (DGM10) - 25m (DGM25) und 50m (DGM50).
+DGM50	dgm50_*_2_nw.xyz
+
+Dateibezeichnung: gemessene Punkte
+-fp_
+-lpb_
+-lpnb_
+-lpub_
+-brk_
+
+
+Dateibezeichnung: synthetische Punkte
+-ab_ 
+-ag_
+-aw_
+
+
+
+https://rapidlasso.com/2017/01/03/first-open-lidar-in-germany/
+
+    14 files with “ab” in the name contain very few points. They look like additional points for under bridges. The “b” is likely for “Brücke” (German for “bridge”).
+    38 files with “ag” in the name contain seem to contain only points in areas where buildings used to cover the terrain but with ground elevation. The “g” is likely for “Gebäude” (German for “building”).
+    30 files with “aw” in the name contain seem to contain only points in areas where there are water bodies but with ground elevation. The “w” is likely for “Wasser” (German for “water”).
+    14 files with “brk” in the name also contain few points. They look like the original bridge point that are replaced by the points in the files with “ab” in the name to flatten the bridges. The “brk” is also likely for “Brücke” (German for “bridge”).
+    42 files with “lpb” in the name. They look like the last return LiDAR points that were classified as ground. The “lpb” is likely for “Letzter Pulse Boden” (German for “last return ground”).
+    42 files with “lpnb” in the name. They look like those last return LiDAR points that were classified as non-ground. The “lpnb” is likely for “Letzter Pulse Nicht Boden” (German for “last return not ground”).
+    32 files with “lpub” in the name contain very few points. They look like the last return points that are too low and were therefore excluded. The “lpub” is likely for “Letzter Pulse Unter Boden” (German for “last return under ground”).
+
