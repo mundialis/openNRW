@@ -96,7 +96,7 @@ for zip in `ls dgm*_EPSG4647_XYZ.zip` ; do
   r.patch input=$TILELIST output=$xyz
   
   # write out merged DGM mosaik as a compressed GeoTIFF
-  r.out.gdal input=$xyz output=$xyz.tif type=Float32 createopt="COMPRESS=LZW"
+  r.out.gdal -m -c input=$xyz output=$xyz.tif type=Float32 createopt="COMPRESS=LZW"
 
   # cleanup: delete all imported tiles
   g.remove raster pattern="dgm*" -f

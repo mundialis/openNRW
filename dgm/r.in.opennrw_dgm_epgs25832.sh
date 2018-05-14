@@ -8,8 +8,15 @@
 #               mundialis GmbH & Co. KG, Bonn
 #               https://www.mundialis.de
 #
-# PURPOSE:      Script to import openNRW DGM XYZ data as regularly gridded DGMs and removed the leading "32" from East coordinate (EPSG4647 --> 25832 hack)
+# PURPOSE:      Script to import openNRW DGM XYZ data as regularly gridded DGMs
 #               It loops over all DGM-ZIPs in a directory.
+#
+#               Notes:It removes the leading "32" from East coordinate (EPSG4647 --> 25832 hack)
+#                     because EPSG4647 comes with false Easting extended by 32000000 to get the preceeding 32.
+#                     Hence 4647 stores with preceeding zone number, whereas 25832 does not.
+#                     So 25832 coordinate xxxxxx is 32xxxxxx in 4647.
+#               See also:
+#                 Maßgeschneiderte EPSG-Codes für GIS-Anwendungen https://www.zentrale-stelle-sapos.de/files/EPSG-Codes.pdf
 #
 # COPYRIGHT:    (C) 2017, 2018 by Markus Neteler, mundialis
 #
@@ -96,7 +103,7 @@ for zip in `ls dgm*_EPSG4647_XYZ.zip` ; do
   r.patch input=$TILELIST output=$xyz
   
   # write out merged DGM mosaik as a compressed GeoTIFF
-  r.out.gdal input=$xyz output=$xyz.tif type=Float32 createopt="COMPRESS=LZW"
+  r.out.gdal -m -c input=$xyz output=$xyz.tif type=Float32 createopt="COMPRESS=LZW"
 
   # cleanup: delete all imported tiles
   g.remove raster pattern="dgm*" -f
