@@ -32,9 +32,6 @@
 
 lynx -dump -nonumbers -listonly https://www.opengeodata.nrw.de/produkte/geobasis/dop/dop/ | grep www.opengeodata.nrw.de/produkte/geobasis | grep EPSG25832_JPEG2000.zip > opengeodata_nrw_dop10_URLs.csv
 
-gzip opengeodata_nrw_dop10_URLs.csv
-echo "Generated <opengeodata_nrw_dop10_URLs.csv.gz>"
-
 rm -f opengeodata_nrw_dop10_tiles.csv
 for ZIP in `cat opengeodata_nrw_dop10_URLs.csv` ; do
   # amusingly, the output is on stderr! so we redirect it... but at the end of the line
@@ -44,10 +41,19 @@ done
 # wipe out some rubbish
 cat opengeodata_nrw_dop10_tiles.tmp | grep "       /vsizip/vsicurl" > opengeodata_nrw_dop10_tiles.csv
 rm -f opengeodata_nrw_dop10_tiles.tmp
+
+gzip opengeodata_nrw_dop10_URLs.csv
+echo "Generated <opengeodata_nrw_dop10_URLs.csv.gz>"
+
 gzip opengeodata_nrw_dop10_tiles.csv
 echo "Generated <opengeodata_nrw_dop10_tiles.csv.gz>"
 
+
+
 echo "Single tile import: Import into GRASS GIS with, e.g.:
 r.import input=/vsizip/vsicurl/https://www.opengeodata.nrw.de/produkte/geobasis/dop/dop/dop_05562014_Gladbeck_EPSG25832_JPEG2000.zip/0E_dop10rgbi_32360_5718_1_nw.jp2 output=0E_dop10rgbi_32360_5718_1_nw"
-
+echo ""
 echo "For mosaics, better generate a VRT mosaic first (using <gdalbuildvrt ...>), then import the VRT file."
+echo ""
+echo "For a tile index, run
+gdaltindex -f GPKG openNRW_DOP10_tileindex.gpkg --optfile opengeodata_nrw_dop10_tiles.csv"
