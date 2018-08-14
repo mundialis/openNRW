@@ -8,7 +8,8 @@
 #               mundialis GmbH & Co. KG, Bonn
 #               https://www.mundialis.de
 #
-# PURPOSE:      Fetch list of openNRW DOP imagery ZIP files
+# PURPOSE:      Fetch list of openNRW DOP 10cm imagery ZIP files
+#               The overall size of all openNRW DOP10 ZIP files is 1.4 TB
 #
 # COPYRIGHT:    (C) 2018 by Markus Neteler, mundialis
 #
