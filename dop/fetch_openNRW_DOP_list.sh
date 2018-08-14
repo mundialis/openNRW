@@ -9,7 +9,10 @@
 #               https://www.mundialis.de
 #
 # PURPOSE:      Fetch list of openNRW DOP 10cm imagery ZIP files
+#               - digital orthophoto tiles of North-Rhine Westphalia, Germany
 #               The overall size of all openNRW DOP10 ZIP files is 1.4 TB
+#
+# Data source:  https://www.opengeodata.nrw.de/produkte/geobasis/dop/dop/
 #
 # COPYRIGHT:    (C) 2018 by Markus Neteler, mundialis
 #
