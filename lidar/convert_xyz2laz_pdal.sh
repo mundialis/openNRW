@@ -32,7 +32,19 @@
 #
 ########################################
 
+## activate when using PDAL from docker hub rather than locally installed
+#alias pdal='docker run -it --rm pdal/pdal pdal'
+
+########################################
+
 INPUT=$1  # xyz
+
+if [ $# -ne 1 ] ; then
+        echo "Usage:
+        $0 dom1l_xxxx.xyz"
+        exit 1
+fi
+
 XYZTMP=`basename $INPUT .xyz`.tmp
 OUTPUT=`basename $INPUT .xyz`
 
