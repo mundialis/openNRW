@@ -33,6 +33,7 @@
 ########################################
 
 ## activate when using PDAL from docker hub rather than locally installed
+## docker pull pdal/pdal
 #alias pdal='docker run -it --rm pdal/pdal pdal'
 
 ########################################

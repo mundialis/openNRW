@@ -10,7 +10,9 @@
 #
 # PURPOSE:      openNRW XYZ to LAZ converter, based on PDAL (http://www.pdal.io)
 #
-# COPYRIGHT:    (C) 2017 by Markus Neteler, mundialis
+#               Use 'fetch_openNRW_LIDAR_list.sh' to generate a download list and script
+#
+# COPYRIGHT:    (C) 2017, 2018 by Markus Neteler, mundialis
 #
 #  This program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -31,6 +33,13 @@
 ########################################
 
 INPUT=$1  # xyz
+
+if [ $# -ne 1 ] ; then
+        echo "Usage:
+        $0 dom1l_xxxx.xyz"
+        exit 1
+fi
+
 XYZTMP=`basename $INPUT .xyz`.tmp
 OUTPUT=`basename $INPUT .xyz`
 
