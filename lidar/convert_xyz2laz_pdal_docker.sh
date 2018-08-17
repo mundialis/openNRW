@@ -32,6 +32,17 @@
 #
 ########################################
 
+# we must pipe data through /data for PDAL-in-docker:
+# https://www.pdal.io/workshop/docker.html?highlight=docker
+#  docker pull pdal/pdal
+
+## Fedora
+alias pdal_docker="sudo /usr/bin/docker run --rm -v $(pwd):/data -t pdal/pdal pdal"
+## Ubuntu
+#alias pdal_docker="docker run --rm -v $(pwd):/data -t pdal/pdal pdal"
+
+########################################
+
 INPUT=$1  # xyz
 
 if [ $# -ne 1 ] ; then
@@ -42,12 +53,6 @@ fi
 
 XYZTMP=`basename $INPUT .xyz`.tmp
 OUTPUT=`basename $INPUT .xyz`
-
-#https://www.pdal.io/workshop/docker.html?highlight=docker
-# docker pull pdal/pdal
-
-# we pipe data through /data!
-alias pdal_docker="sudo /usr/bin/docker run --rm -v $(pwd):/data -t pdal/pdal pdal"
 
 # fix white space which occurs in some of the openNRW XYZ files
 cat $INPUT | sed '1ix,y,z' | sed 's+[[:blank:]]++g' > $XYZTMP
