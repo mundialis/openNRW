@@ -54,6 +54,13 @@ fi
 XYZTMP=`basename $INPUT .xyz`.tmp
 OUTPUT=`basename $INPUT .xyz`
 
+# check if input is compressed which we don't like
+file $INPUT | grep 'Zip archive data' > /dev/null
+if [ $? -ne 0 ] ; then
+   echo "ERROR: input must be uncompressed ASCII file"
+   exit 1
+fi
+
 # fix white space which occurs in some of the openNRW XYZ files
 cat $INPUT | sed '1ix,y,z' | sed 's+[[:blank:]]++g' > $XYZTMP
 
