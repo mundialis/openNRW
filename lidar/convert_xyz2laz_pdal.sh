@@ -45,8 +45,8 @@ OUTPUT=`basename $INPUT .xyz`
 
 # check if input is compressed which we don't like
 file $INPUT | grep 'Zip archive data' > /dev/null
-if [ $? -ne 0 ] ; then
-   echo "ERROR: input must be uncompressed ASCII file"
+if [ $? -ne 1 ] ; then
+   echo "ERROR: input must be uncompressed ASCII file (found $INPUT - ZIP format)"
    exit 1
 fi
 
