@@ -83,7 +83,8 @@ echo "{
   ]
 }" > convert_txt2las_$OUTPUT.pdal
 
-cat convert_txt2las_$OUTPUT.pdal
+## debug
+# cat convert_txt2las_$OUTPUT.pdal
 
 # conversion with PDAL pipeline
 pdal_docker pipeline --input /data/convert_txt2las_$OUTPUT.pdal
