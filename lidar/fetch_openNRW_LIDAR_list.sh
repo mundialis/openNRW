@@ -2,14 +2,14 @@
 
 ############################################################################
 #
-# NAME:        fetch_openNRW_LIDAR_list.sh
+# NAME:         fetch_openNRW_LIDAR_list.sh
 #
 # AUTHOR(S):    Markus Neteler <neteler at mundialis.de>
 #               mundialis GmbH & Co. KG, Bonn
 #               https://www.mundialis.de
 #
 # PURPOSE:      Fetch list of openNRW LIDAR XYZ ZIP files
-#               - digital orthophoto tiles of North-Rhine Westphalia, Germany
+#               - LiDAR XYZ file of North-Rhine Westphalia, Germany
 #               The overall size of all openNRW LIDAR10 ZIP files is 1.4 TB
 #
 # Data source:  https://www.opengeodata.nrw.de/produkte/geobasis/dom/dom1l/
@@ -40,7 +40,7 @@ cat opengeodata_nrw_lidar_URLs.csv | sed 's+^+wget -c +g' > download_openNRW_LID
 
 echo "openNRW LiDAR URLs stored in <opengeodata_nrw_lidar_URLs.csv>"
 echo ""
-echo "Next run (warning: 2.3 TB of disk space needed!):
+echo "Next run (warning: 1.4 TB of disk space needed! - or reduce the list to your needs by editing the file):
   sh download_openNRW_LIDAR_XYZ_ZIP_files.sh
 
 Then, to convert XYZ.zip to LAZ:

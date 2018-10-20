@@ -8,9 +8,9 @@
 #               mundialis GmbH & Co. KG, Bonn
 #               https://www.mundialis.de
 #
-# PURPOSE:      openNRW XYZ to LAZ converter, based on PDAL (http://www.pdal.io)
+# PURPOSE:      openNRW XYZ to LAZ format converter
 #
-#               Use 'fetch_openNRW_LIDAR_list.sh' to generate a download list and script
+# REQUIREMENTS: PDAL (http://www.pdal.io), standard system tools (basename, cat, ...)
 #
 # COPYRIGHT:    (C) 2017, 2018 by Markus Neteler, mundialis
 #
@@ -24,24 +24,50 @@
 #  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 #  GNU General Public License for more details.
 #
-############################################################################
-
-## Usage:
-# To be used in a shell loop
-#    for xyz in `ls dom1l_05315000_Köln_EPSG5555_XYZ/*.xyz` ; do sh convert_xyz2laz_pdal.sh $xyz ; done
 #
-########################################
+#
+# PROCEDURE:    The openNRW DOM1L LiDAR data are delivered in XYZ ASCII format.
+#               The purpose of this script is to convert the XYZ into compressed LAS format, i.e. LAZ.
+#
+#               Suggested data processing procedure :
+#
+#               1. Use 'fetch_openNRW_LIDAR_list.sh' (same repo) to generate a download list and script
+#
+#               2. Run the generated download script to download the DOM1L ZIP files
+#
+#               3. Unpack the ZIP file(s)
+#
+#                   for myzip in $(ls *.zip) ; do NAME=`echo $myzip | sed 's+_XYZ.zip++g'` ; (mkdir $NAME ; cd $NAME ; unzip -o ../$myzip ) ; done
+#
+#               4. Install PDAL docker image
+#
+#                   docker pull pdal/pdal
+#
+#               5. Using this script: convert the XYZ to LAZ format using PDAL (docker)
+#
+#                  Due to using docker we must pipe data through /data for PDAL-in-docker:
+#                  https://www.pdal.io/workshop/docker.html?highlight=docker
+#
+#                  Important: configure docker alias below!
+#
+#                  Hint: use this script in a shell loop:
+#
+#                   for dom1l_dir in $(ls -1 | grep dom1l_) ; do
+#                       cd $dom1l_dir/
+#                       for xyz in $(ls *.xyz) ; do echo "Processing <$xyz>..." ; sh ../convert_xyz2laz_pdal_docker.sh $xyz ; done
+#                       cd ..
+#                   done
+#
+######################################################################################################
 
-# we must pipe data through /data for PDAL-in-docker:
-# https://www.pdal.io/workshop/docker.html?highlight=docker
-#  docker pull pdal/pdal
+###### configuration
+## For convenience, we create an alias:
+## On Fedora:
+# alias pdal_docker="sudo /usr/bin/docker run --rm -v $(pwd):/data -t pdal/pdal pdal"
+## On Ubuntu:
+alias pdal_docker="docker run --rm -v $(pwd):/data -t pdal/pdal pdal"
 
-## Fedora
-alias pdal_docker="sudo /usr/bin/docker run --rm -v $(pwd):/data -t pdal/pdal pdal"
-## Ubuntu
-#alias pdal_docker="docker run --rm -v $(pwd):/data -t pdal/pdal pdal"
-
-########################################
+####### nothing to change below
 
 INPUT=$1  # xyz
 
@@ -66,6 +92,8 @@ cat $INPUT | sed '1ix,y,z' | sed 's+[[:blank:]]++g' > $XYZTMP
 
 # convert XYZ to LAS with compression = LAZ
 
+# docker requires escaping of " chars
+#
 # Filter, based on http://www.pdal.io/stages/writers.las.html
 echo "{
   \"pipeline\":[
@@ -86,7 +114,7 @@ echo "{
 ## debug
 # cat convert_txt2las_$OUTPUT.pdal
 
-# conversion with PDAL pipeline
+# conversion with PDAL pipeline using /data
 pdal_docker pipeline --input /data/convert_txt2las_$OUTPUT.pdal
 
 # remove tmp file
