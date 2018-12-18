@@ -17,8 +17,8 @@
 # 
 # COPYRIGHT:    (C) 2018 by Markus Neteler, mundialis
 #
-# REQUIREMENTS: 7z (or: unzip)
-#               apt-get install p7zip-full p7zip-rar -y
+# REQUIREMENTS: 7z
+#               to install: apt-get install p7zip-full p7zip-rar -y
 #
 #  This program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -38,6 +38,12 @@
 #
 #   sh openNRW_unpack_DOP10.sh
 ########################################
+
+#### check if we have 7z
+if [ ! -x "`which 7z`" ] ; then
+    echo "7z required, please install first (<apt-get install p7zip-full p7zip-rar> | <dnf install p7zip-plugins>)"
+    exit 1
+fi
 
 # we are in /mnt/geoserver_geodata/openNRW_DOP10/ and unpack final JP2 tiles into dop10_tiles/
 mkdir -p dop10_tiles && cd dop10_tiles
