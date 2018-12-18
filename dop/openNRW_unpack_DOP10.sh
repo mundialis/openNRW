@@ -75,8 +75,11 @@ for myzip in `ls ../*.zip` ; do
   rmdir tmp
 
   # cleanup processed DOP10 ZIP
-  rm -f $myzip
+  mkdir -p zips_done
+  mv $myzip zips_done/
 done
+
+echo "Unpacking done. Processed ZIP files are in directory <./zips_done/>"
 
 exit 0
 
