@@ -12,7 +12,7 @@
 #
 # REQUIREMENTS: PDAL (http://www.pdal.io), standard system tools (basename, cat, ...)
 #
-# COPYRIGHT:    (C) 2017, 2018 by Markus Neteler, mundialis
+# COPYRIGHT:    (C) 2017-2019 by Markus Neteler, mundialis
 #
 #  This program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -33,11 +33,18 @@
 #
 #               1. Use 'fetch_openNRW_LIDAR_list.sh' (same repo) to generate a download list and script
 #
-#               2. Run the generated download script to download the DOM1L ZIP files
+#               2. Run the generated download script to download the DOM1L XYZ ZIP files
 #
-#               3. Unpack the ZIP file(s)
+#               3. Unpack the XYZ ZIP file(s)
 #
-#                   for myzip in $(ls *.zip) ; do NAME=`echo $myzip | sed 's+_XYZ.zip++g'` ; (mkdir $NAME ; cd $NAME ; unzip -o ../$myzip ) ; done
+#                  3a) using "unzip":
+#                      for myzip in $(ls *.zip) ; do NAME=`echo $myzip | sed 's+_XYZ.zip++g'` ; (mkdir $NAME ; cd $NAME ; unzip -o ../$myzip ) ; done
+#
+#                  3b) using "7z" (`apt-get install p7zip-full p7zip-rar` | `dnf install p7zip-plugins`)":
+#                      for myzip in $(ls *.zip) ; do NAME=`echo $myzip | sed 's+_XYZ.zip++g'` ; (mkdir $NAME ; cd $NAME ; 7z x ../$myzip -aoa ) ; done
+#
+#                  3c) Parallelized unpacking, see in this repo:
+#                      unpack_parallel_openNRW_LIDAR_ZIPs.sh
 #
 #               4. Install PDAL docker image
 #
