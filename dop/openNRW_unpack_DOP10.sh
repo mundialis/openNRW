@@ -9,7 +9,7 @@
 #               https://www.mundialis.de
 #
 # PURPOSE:      Unpacks openNRW DOP imagery ZIP files into flat directory but with optimized JP2 file names.
-#               Simple flat unpacking fails since identical JP2 names exist in multiple openNRW DOP ZIP files.
+#               Note: simple flat unpacking would fail since identical JP2 names exist in multiple openNRW DOP ZIP files.
 #
 #               Example:
 #                orig:   dop_05974044_Warstein_EPSG25832_JPEG2000.zip  /  2A_dop10rgbi_32458_5698_1_nw.jp2
