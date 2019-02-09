@@ -11,12 +11,13 @@
 # PURPOSE:      Fetch list of openNRW DOP 10cm imagery ZIP files
 #               - digital orthophoto tiles of North-Rhine Westphalia, Germany
 #               The overall size of all openNRW DOP10 ZIP files is 1.4 TB
+#               Generates: fetch_DOP10.sh
 #
 # Data source:  https://www.opengeodata.nrw.de/produkte/geobasis/dop/dop/
 #
-# COPYRIGHT:    (C) 2018 by Markus Neteler, mundialis
+# COPYRIGHT:    (C) 2018-2019 by Markus Neteler, mundialis
 #
-# REQUIREMENTS: lynx, gdal, gzip
+# REQUIREMENTS: lynx, gdal, gzip, sed
 #
 #  This program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -32,6 +33,8 @@
 
 # Usage:
 #   sh fetch_openNRW_DOP_list.sh
+# Output:
+#   fetch_DOP10.sh
 ########################################
 
 lynx -dump -nonumbers -listonly https://www.opengeodata.nrw.de/produkte/geobasis/dop/dop/ | grep www.opengeodata.nrw.de/produkte/geobasis | grep EPSG25832_JPEG2000.zip > opengeodata_nrw_dop10_URLs.csv
@@ -46,9 +49,14 @@ done
 cat opengeodata_nrw_dop10_tiles.tmp | grep "       /vsizip/vsicurl" > opengeodata_nrw_dop10_tiles.csv
 rm -f opengeodata_nrw_dop10_tiles.tmp
 
+# generate download script
+cat opengeodata_nrw_dop10_URLs.csv | sed 's+^+wget -c +g' > fetch_DOP10.sh
+
+# compress DOP URLs list
 gzip opengeodata_nrw_dop10_URLs.csv
 echo "Generated <opengeodata_nrw_dop10_URLs.csv.gz>"
 
+# compress DOP tiles list
 gzip opengeodata_nrw_dop10_tiles.csv
 echo "Generated <opengeodata_nrw_dop10_tiles.csv.gz>"
 
