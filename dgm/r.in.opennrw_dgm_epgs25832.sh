@@ -53,6 +53,13 @@ if  [ -z "$GISBASE" ] ; then
  exit 1
 fi
 
+#### check if we have fuse-zip
+if [ ! -x "`which fuse-zip`" ] ; then
+    g.message -e "fuse-zip required, please install fuse-zip first"
+    exit 1
+fi
+
+
 # loop over all cities a.k.a. ZIP files (outer loop)
 for zip in `ls dgm*_EPSG4647_XYZ.zip` ; do
 
