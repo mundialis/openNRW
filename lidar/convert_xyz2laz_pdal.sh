@@ -71,6 +71,7 @@ if [ $? -ne 1 ] ; then
    exit 1
 fi
 
+echo "Processing: $INPUT ..."
 # fix white space which occurs in some of the openNRW XYZ files
 cat $INPUT | sed '1ix,y,z' | sed 's+[[:blank:]]++g' > $XYZTMP
 
