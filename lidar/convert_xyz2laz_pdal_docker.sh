@@ -55,7 +55,7 @@
 #                  Due to using docker we must pipe data through /data for PDAL-in-docker:
 #                  https://www.pdal.io/workshop/docker.html?highlight=docker
 #
-#                  Important: configure docker alias below!
+#                  Important: configure docker "alias" below!
 #
 #                  Hint: use this script in a shell loop:
 #
@@ -68,11 +68,12 @@
 ######################################################################################################
 
 ###### configuration
-## For convenience, we create an alias:
+## For convenience, we create an variable shortcut for docker:
 ## On Fedora:
-# alias pdal_docker="sudo /usr/bin/docker run --rm -v $(pwd):/data -t pdal/pdal pdal"
+# export pdal_docker="sudo /usr/bin/docker run --rm -v $(pwd):/data -t pdal/pdal pdal"
 ## On Ubuntu:
-alias pdal_docker="docker run --rm -v $(pwd):/data -t pdal/pdal pdal"
+export pdal_docker="docker run --rm -v $(pwd):/data -t pdal/pdal pdal"
+
 
 ####### nothing to change below
 
@@ -123,7 +124,7 @@ echo "{
 # cat convert_txt2las_$OUTPUT.pdal
 
 # conversion with PDAL pipeline using /data
-pdal_docker pipeline --input /data/convert_txt2las_$OUTPUT.pdal
+$pdal_docker pipeline --input /data/convert_txt2las_$OUTPUT.pdal
 
 # remove tmp file
 rm -f $XYZTMP convert_txt2las_$OUTPUT.pdal
