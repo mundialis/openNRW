@@ -18,7 +18,10 @@
 #               See also:
 #                 Maßgeschneiderte EPSG-Codes für GIS-Anwendungen https://www.zentrale-stelle-sapos.de/files/EPSG-Codes.pdf
 #
-# COPYRIGHT:    (C) 2017, 2018 by Markus Neteler, mundialis
+# COPYRIGHT:    (C) 2017-2019 by Markus Neteler, mundialis
+#
+# REQUIREMENTS: apt-get install fuse-zip (Ubuntu/Debian)
+#               dnf install fuse-zip     (Fedora/CentOS)
 #
 #  This program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -38,12 +41,12 @@
 
 ####
 # first time only, create location:
-# grass74 -c epsg:25832 -e ~/grassdata/epsg25832_openNRW/
+# grass76 -c epsg:25832 -e ~/grassdata/epsg25832_openNRW/
 #
 ####
 #
 # for all subsequent uses, start GRASS GIS for the DGM session:
-# grass74 ~/grassdata/epsg25832_openNRW/PERMANENT/
+# grass76 ~/grassdata/epsg25832_openNRW/PERMANENT/
 
 # debug
 # zip=dgm1_05154020_Issum_EPSG4647_XYZ.zip

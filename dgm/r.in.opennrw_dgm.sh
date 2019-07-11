@@ -11,7 +11,10 @@
 # PURPOSE:      Script to import openNRW DGM XYZ data as regularly gridded DGMs.
 #               It loops over all DGM-ZIPs in a directory.
 #
-# COPYRIGHT:    (C) 2017 by Markus Neteler, mundialis
+# COPYRIGHT:    (C) 2017-2019 by Markus Neteler, mundialis
+#
+# REQUIREMENTS: apt-get install fuse-zip (Ubuntu/Debian)
+#               dnf install fuse-zip     (Fedora/CentOS)
 #
 #  This program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -31,12 +34,12 @@
 
 ####
 # first time only, create location:
-# grass74 -c epsg:4647 -e ~/grassdata/epsg4647_openNRW/
+# grass76 -c epsg:4647 -e ~/grassdata/epsg4647_openNRW/
 #
 ####
 # 
 # for all subsequent uses, start GRASS GIS for the DGM session:
-# grass74 ~/grassdata/epsg4647_openNRW/PERMANENT/
+# grass76 ~/grassdata/epsg4647_openNRW/PERMANENT/
 
 # debug
 # zip=dgm1_05154020_Issum_EPSG4647_XYZ.zip
