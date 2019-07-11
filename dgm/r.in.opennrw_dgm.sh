@@ -55,6 +55,14 @@ if [ ! -x "`which fuse-zip`" ] ; then
     exit 1
 fi
 
+#check if a MASK is already present:
+MASKTMP=mask.$$
+USERMASK="usermask_$MASKTMP"
+eval `g.findfile element=cell file=MASK`
+if [ "$file" ] ; then
+    g.message "A user raster mask (MASK) is present. Saving it..."
+    g.rename raster=MASK,"$USERMASK" --quiet > /dev/null
+fi
 
 # loop over all cities a.k.a. ZIP files (outer loop)
 for zip in `ls dgm*_EPSG4647_XYZ.zip` ; do
@@ -116,3 +124,13 @@ for zip in `ls dgm*_EPSG4647_XYZ.zip` ; do
   # at this stage the mapset should be empty and the zip file disconnected. Clean for the next loop...
   
 done # end of city loop
+
+#restore user mask if it was present:
+eval `g.findfile element=cell file=$USERMASK`
+if [ "$file" ] ; then
+  g.message "Restoring user raster mask (MASK) ..."
+  g.remove raster name=MASK -f --quiet > /dev/null
+  g.rename raster="$USERMASK",MASK --quiet > /dev/null
+fi
+
+exit 0
