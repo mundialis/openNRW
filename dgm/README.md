@@ -2,7 +2,7 @@ Scripts to process openNRW data: Digitales Geländemodell, 1m resolution, ASCII 
 
 Overview: https://www.opengeodata.nrw.de/produkte/geobasis/
 
- * dgm: Digitales Geländemodell, 1m | digital elevation model, provided as XYZ matrices, ZIPed by municipality
+ * DGM1: Digitales Geländemodell, 1m | gridded digital elevation model, provided as XYZ matrices, ZIPed by municipality
      * data download: https://www.opengeodata.nrw.de/produkte/geobasis/dgm/dgm1/
 
 Preprocessing:
