@@ -9,6 +9,8 @@ Scripts to process openNRW data: LiDAR Punktwolken DGM1L - point clouds, ~ 2 ret
 
 Hint: the DGM is already available as gridded 1m DGM (see https://github.com/mundialis/openNRW/tree/master/dgm).
 
+<img src="opennrw_lidar_colorized_koeln_3D.png" width="60%" align="right"></a>
+
 ## Fetch XYZ Lidar point cloud data
 
  * `fetch_openNRW_LIDAR_list.sh`: Fetch list of openNRW LIDAR XYZ ZIP files as a help for download
