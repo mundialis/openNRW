@@ -18,7 +18,7 @@
 #               See also:
 #                 Maßgeschneiderte EPSG-Codes für GIS-Anwendungen https://www.zentrale-stelle-sapos.de/files/EPSG-Codes.pdf
 #
-# COPYRIGHT:    (C) 2017-2019 by Markus Neteler, mundialis
+# COPYRIGHT:    (C) 2017-2020 by Markus Neteler, mundialis
 #
 # REQUIREMENTS: apt-get install fuse-zip (Ubuntu/Debian)
 #               dnf install fuse-zip     (Fedora/CentOS)
@@ -37,7 +37,7 @@
 
 #
 # openNRW data source:
-# https://www.opengeodata.nrw.de/produkte/geobasis/dgm/dgm1/
+# https://www.opengeodata.nrw.de/produkte/geobasis/hm/dgm1_xyz/
 
 ####
 # first time only, create location:

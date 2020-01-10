@@ -11,7 +11,7 @@
 # PURPOSE:      Script to import openNRW DGM XYZ data as regularly gridded DGMs.
 #               It loops over all DGM-ZIPs in a directory.
 #
-# COPYRIGHT:    (C) 2017-2019 by Markus Neteler, mundialis
+# COPYRIGHT:    (C) 2017-2020 by Markus Neteler, mundialis
 #
 # REQUIREMENTS: apt-get install fuse-zip (Ubuntu/Debian)
 #               dnf install fuse-zip     (Fedora/CentOS)
@@ -30,7 +30,7 @@
 
 #
 # openNRW data source:
-# https://www.opengeodata.nrw.de/produkte/geobasis/dgm/dgm1/
+# https://www.opengeodata.nrw.de/produkte/geobasis/hm/dgm1_xyz/
 
 ####
 # first time only, create location:

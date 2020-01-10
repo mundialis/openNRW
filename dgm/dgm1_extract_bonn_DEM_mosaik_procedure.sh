@@ -10,7 +10,7 @@
 #
 # PURPOSE:      Script to mosaik all openNRW dgm1 tiles which cover the city of Bonn
 #
-# COPYRIGHT:    (C) 2018 by Markus Neteler, mundialis
+# COPYRIGHT:    (C) 2018-2020 by Markus Neteler, mundialis
 #
 #  This program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -27,7 +27,7 @@
 ## Example: Bonn
 #
 # openNRW data source:
-# https://www.opengeodata.nrw.de/produkte/geobasis/dgm/dgm1/
+# https://www.opengeodata.nrw.de/produkte/geobasis/hm/dgm1_xyz/
 
 # fetch Bonn city boundary
 # see http://training.gismentors.eu/grass-gis-workshop-jena-2018/units/02.html?highlight=openstreetmap
