@@ -1,0 +1,10 @@
+Classification Value (Klasse) 	Beschreibung 
+2	Geländepunkte, Bodenpunkte Punkte, die das natürliche Relief der Geländeoberfläche beschreiben. Also ausschließlich Gebäude-, Vegetations- und sonstige Punkte. Punkte auf Gewässern sind ebenfalls Geländepunkte. Natürliche Kleinformen sind grundsätzlich im Datenbestand der Bodenpunktklasse enthalten. 
+24	Kellerpunkte Kellerpunkte liegen in einem Kellerabgang oder Lichtschacht unter dem natürlichen Gelände. Einfahrten gehören zu den Bodenpunkten. 
+17	Brückenpunkte Brückenpunkte sind nicht näher spezifizierte Höhenpunkte, die der Fahrbahn zuzuordnen sind. Dazu gehören nicht die Widerlager, Geländer, Brückenpfeiler, Brückenfundamente usw. Rohrdurchlässe sind keine Brücken. 
+26	2 aufgefüllte Bodenpunkte (synthetisch) Unter den Brücken oder in dichtem Wald sind automatisch interpolierte Bodenpunkte eingefügt. 
+21	aufgefüllte Gebäudepunkte (synthetisch) Unter großen Gebäuden sind automatisch interpolierte Gebäudepunkte eingefügt. 
+9	aufgefüllte Gewässerpunkte (synthetisch) Unter den Brücken sind automatisch interpolierte Wasserpunkte eingefügt. 
+20	3 Last Return nicht Boden Last Return nicht Boden sind sämtliche Last-Returns (und Only-Returns) der Punktwolke, die keiner der hierüber aufgeführten Punktklassen zugeordnet werden können; z. B. Punkte auf Gebäuden, Autos usw. 
+1	Unklassifizierte Punkte Unklassifizierte Punkte sind nicht spezifizierte Höhenpunkte, die keiner der anderen aufgeführten Punktklassen zugeordnet werden können, beispielsweise Zwischenreflexionen (Medium Return) der Vegetation. 
+18	Hochpunkte (Rauschen) Hochpunkte sind nicht näher spezifizierte Höhenpunkte, die kein Oberflächenobjekt beschreiben und durch Fehlmessungen (z. B. Vögel, Nebel, Wolken, Dampf von großen Kraftwerken etc.) entstanden sind. 
