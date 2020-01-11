@@ -52,3 +52,6 @@ Script to colorize LiDAR point cloud with RGB values from related orthophoto:
 
  * `lidar_colorize_pdal.sh`: requires to edit `pdal_filter_add_rgb.json`
 
+## Online LiDAR viewer
+
+ * https://plas.io - WebGL point cloud rendering
