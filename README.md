@@ -1,6 +1,9 @@
 # openNRW
-Scripts to process openNRW data (federal state of North-Rhine Westphalia, Germany), https://www.opengeodata.nrw.de/produkte/geobasis/
+Scripts to process openNRW data (federal state of North-Rhine Westphalia, Germany)
+ * Overview: https://www.bezreg-koeln.nrw.de/brk_internet/geobasis/index.html
+ * Data download: https://www.opengeodata.nrw.de/produkte/geobasis/
 
+# Scripts provided here:
  * dgm: Digitales Geländemodell, 1m | digital elevation model, provided as XYZ matrices, ZIPed by municipality
      * data download: https://www.opengeodata.nrw.de/produkte/geobasis/hm/dgm1_xyz/
  * dop: Digitales Orthophoto, 10cm, R-G-B-NIR | digital orthophotos, provided as JP2000, ZIPed by municipality
