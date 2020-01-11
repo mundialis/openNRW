@@ -1,11 +1,14 @@
 Scripts to process openNRW data: LiDAR Punktwolken DGM1L - point clouds, ~ 2 returns/sqm, XYZ ASCII format
 
  * lidar: LiDAR Punktwolken, ~ 2 returns/sqm | LiDAR point clouds, originally provided as XYZ ASCII lists, ZIPed by municipality
-     * data download:
-         * DGM1L - Bodenpunkte (Last-Pulse-Boden):
-             * https://www.opengeodata.nrw.de/produkte/geobasis/dgm/dgm1l/
-         * **DOM1L - Oberflächenpunkte (First-Pulse-Oberflächen):**
-             * https://www.opengeodata.nrw.de/produkte/geobasis/dom/dom1l/
+     * Overview: https://www.bezreg-koeln.nrw.de/brk_internet/geobasis/hoehenmodelle/3d-messdaten/index.html
+     * Flight plan: https://www.tim-online.nrw.de/tim-online2/uebersicht.html?thema=dhm
+     * Georeferenzierung:
+         * Lage / Lageangabe: ETRS89/UTM32 (EPSG 25832)
+         * Höhe / Höhenangabe: DHHN2016 (EPSG 7837)
+     * Punktdichte: Mittlere Punktdichte: 4 - 10 Pkt/m^2
+     * Data download:
+         * https://www.opengeodata.nrw.de/produkte/geobasis/hm/3dm_l_las/
 
 Hint: the DGM is already available as gridded 1m DGM (see https://github.com/mundialis/openNRW/tree/master/dgm).
 
