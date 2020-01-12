@@ -55,3 +55,7 @@ Script to colorize LiDAR point cloud with RGB values from related orthophoto:
 ## Online LiDAR viewer
 
  * https://plas.io - WebGL point cloud rendering
+
+## PDAL Workshop material
+
+ * Howard Butler et al, 2019: Point Cloud Processing and Analysis with PDAL, https://pdal.s3.amazonaws.com/workshop/PDAL-workshop.pdf
