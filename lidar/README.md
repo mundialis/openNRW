@@ -1,6 +1,6 @@
-Scripts to process openNRW data: LiDAR Punktwolken DGM1L - point clouds, ~4 returns/sqm, LAZ format
+## Scripts to process openNRW LiDAR data
 
- * lidar: LiDAR point clouds, ~4 returns/sqm, provided as ZIP files, by municipality
+ * lidar: LiDAR point clouds, ~4 returns/sqm, LAZ files provided by municipality as ZIP files
      * Overview: https://www.bezreg-koeln.nrw.de/brk_internet/geobasis/hoehenmodelle/3d-messdaten/index.html
      * Flight plan: https://www.tim-online.nrw.de/tim-online2/uebersicht.html?thema=dhm
      * Georeferenzierung:
