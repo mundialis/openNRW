@@ -44,6 +44,10 @@
 # debug
 # zip=dgm1_05154020_Issum_EPSG4647_XYZ.zip
 
+# optional reference raster for grid geometry alignment
+# NOTE: this can introduce a grid shift
+ref_raster=""
+
 if  [ -z "$GISBASE" ] ; then
  echo "You must be in GRASS GIS to run this program." >&2
  exit 1
@@ -55,10 +59,10 @@ if [ ! -x "`which fuse-zip`" ] ; then
     exit 1
 fi
 
-#check if a MASK is already present:
+#check if a MASK is already present in the current mapset:
 MASKTMP=mask.$$
 USERMASK="usermask_$MASKTMP"
-eval `g.findfile element=cell file=MASK`
+eval `g.findfile element=cell file=MASK mapset=.`
 if [ "$file" ] ; then
     g.message "A user raster mask (MASK) is present. Saving it..."
     g.rename raster=MASK,"$USERMASK" --quiet > /dev/null
@@ -88,12 +92,15 @@ for zip in `ls dgm*_EPSG4647_XYZ.zip` ; do
   for dgm in `ls dgm*.xyz` ; do
     # irregular spaces :(
     # to get rid of them, we pipe the entire XYZ-DGM into the "tr", then into r.in.xyz used as bounding box scanner
-    compregion=`cat $dgm  | tr -s ' ' ' ' | r.in.xyz input=- separator=space -s -g output=dummy | cut -d' ' -f1-`
+    compregion=`cat $dgm  | tr -s ' ' ' ' | r.in.xyz input=- separator=space -s -g output=dummy | cut -d' ' -f1-4`
     g.region $compregion res=1 -p
 
     # enlarge computational region by half a raster cell (here 0.5m) to
     # store the points as cell centers:
     g.region n=n+0.5 s=s-0.5 w=w-0.5 e=e+0.5 -p
+    if [ -n "$ref_raster" ] ; then
+      g.region align=$ref_raster -p
+    fi
 
     name=`basename $dgm .xyz`
     cat $dgm | tr -s ' ' ' ' | r.in.xyz input=- separator=space method=mean output=$name
@@ -111,7 +118,11 @@ for zip in `ls dgm*_EPSG4647_XYZ.zip` ; do
   g.region raster=$TILELIST -p
   
   # merge all tiles into one map
-  r.patch input=$TILELIST output=$xyz
+  if [ -x "`which r.buildvrt`" ] ; then
+      r.buildvrt input=$TILELIST output=$xyz
+  else
+      r.patch input=$TILELIST output=$xyz
+  fi
   
   # write out merged DGM mosaik as a compressed GeoTIFF
   r.out.gdal -m -c input=$xyz output=$xyz.tif type=Float32 createopt="COMPRESS=LZW"
@@ -126,7 +137,7 @@ for zip in `ls dgm*_EPSG4647_XYZ.zip` ; do
 done # end of city loop
 
 #restore user mask if it was present:
-eval `g.findfile element=cell file=$USERMASK`
+eval `g.findfile element=cell file=$USERMASK mapset=.`
 if [ "$file" ] ; then
   g.message "Restoring user raster mask (MASK) ..."
   g.remove raster name=MASK -f --quiet > /dev/null
