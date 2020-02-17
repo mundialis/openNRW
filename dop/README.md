@@ -1,8 +1,10 @@
 Scripts to process openNRW data: Digitales Orthophoto, R-G-B-NIR, 10cm resolution, JP2000 format
 
-Overview: https://www.opengeodata.nrw.de/produkte/geobasis/
+Overviews:
 
- * dop: Digitales Orthophoto, 10cm, R-G-B-NIR | digital orthophotos, provided as JP2000, ZIPed by municipality
+ * product description: https://www.opengeodata.nrw.de/produkte/geobasis/
+ * map of flight dates (Befliegungsdatum): https://www.tim-online.nrw.de/tim-online2/uebersicht.html?thema=dop
+ * data: DOP - Digitales Orthophoto, 10cm, R-G-B-NIR | digital orthophotos, provided as JP2000, ZIPed by municipality
      * data download: https://www.opengeodata.nrw.de/produkte/geobasis/dop/dop/
 
 Download scripts:
