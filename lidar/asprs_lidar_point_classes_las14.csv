@@ -1,0 +1,22 @@
+classification_value;Meaning;color;hex;rgb
+0;Created, never classified;lightgrey;#D3D3D3;211,211,211
+1;Unclassified;lightgray;#D3D3D3;211,211,211
+2;Ground;blue;#0000FF;0,0,255
+3;Low vegetation;limegreen;#32CD32;50,205,50
+4;Medium vegetation;forestgreen;#228B22;34,139,34
+5;High vegetation;darkgreen;#006400;0,100,0
+6;Building;red;#FF0000;255,0,0
+7;Low point (noise);yellow;#FFFF00;255,255,0
+8;Reserved;yellow;#FFFF00;255,255,0
+9;Water;cornflowerblue;#6495ED;100,149,237
+10;Rail;yellow;#FFFF00;255,255,0
+11;Road surface;gray20;#333333;51,51,51
+12;Reserved;yellow;#FFFF00;255,255,0
+13;Wire - guard (shield);pink;#FFC0CB;255,192,203
+14;Wire - conductor (phase);pink;#FFC0CB;255,192,203
+15;Transmission tower;purple;#800080;128,0,128
+16;Wire-structure connector (e.g. Insulator);pink;#FFC0CB;255,192,203
+17;Bridge deck;orange;#FFA500;255,165,0
+18;High noise;yellow;#FFFF00;255,255,0
+19-63;Reserved;;;
+64-255;User definable;;;
