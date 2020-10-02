@@ -1,14 +1,14 @@
 ## Scripts to process openNRW LiDAR data
 
- * lidar: LiDAR point clouds, ~4-20 returns/sqm; LAZ files provided by municipality as ZIP files
+ * lidar: LiDAR point clouds provided in LAZ format
      * Overview: https://www.bezreg-koeln.nrw.de/brk_internet/geobasis/hoehenmodelle/3d-messdaten/index.html
      * Flight plan: https://www.tim-online.nrw.de/tim-online2/uebersicht.html?thema=dhm
      * Format: LAS Version 1.2: https://www.bezreg-koeln.nrw.de/brk_internet/geobasis/hoehenmodelle/nutzerinformationen.pdf
-     * LAS Classes: see table in https://www.bezreg-koeln.nrw.de/brk_internet/geobasis/hoehenmodelle/nutzerinformationen.pdf
+     * LAS 1.2 classes: see table in https://www.bezreg-koeln.nrw.de/brk_internet/geobasis/hoehenmodelle/nutzerinformationen.pdf
      * Georeferenzierung:
          * Lage / Lageangabe: ETRS89/UTM32 (EPSG 25832)
          * Höhe / Höhenangabe: DHHN2016 (EPSG 7837)
-     * Punktdichte: Mittlere Punktdichte: 4 - 10 Pkt/m^2
+     * Point density: 4 - 10 pnts/m^2
      * Data download (2.2 TB of ZIP files):
          * https://www.opengeodata.nrw.de/produkte/geobasis/hm/3dm_l_las/
 
