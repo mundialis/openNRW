@@ -3,7 +3,7 @@
  * lidar: LiDAR point clouds provided in LAZ format
      * Overview: https://www.bezreg-koeln.nrw.de/brk_internet/geobasis/hoehenmodelle/3d-messdaten/index.html
      * Flight plan: https://www.tim-online.nrw.de/tim-online2/uebersicht.html?thema=dhm
-     * Format: LAS Version 1.2: https://www.bezreg-koeln.nrw.de/brk_internet/geobasis/hoehenmodelle/nutzerinformationen.pdf
+     * Format: LAS Version 1.2, PDRF 1: https://www.bezreg-koeln.nrw.de/brk_internet/geobasis/hoehenmodelle/nutzerinformationen.pdf
      * LAS 1.2 classes: see table in https://www.bezreg-koeln.nrw.de/brk_internet/geobasis/hoehenmodelle/nutzerinformationen.pdf
      * Georeferenzierung:
          * Lage / Lageangabe: ETRS89/UTM32 (EPSG 25832)
