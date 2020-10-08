@@ -8,7 +8,7 @@
 #               mundialis GmbH & Co. KG, Bonn
 #               https://www.mundialis.de
 #
-# PURPOSE:      Script to import openNRW DGM XYZ data as regularly gridded DGMs.
+# PURPOSE:      Script to import openNRW DGM XYZ data as regularly gridded DGMs
 #               It loops over all DGM-ZIPs in a directory.
 #
 # COPYRIGHT:    (C) 2017-2020 by Markus Neteler, mundialis
@@ -34,12 +34,12 @@
 
 ####
 # first time only, create location:
-# grass76 -c epsg:4647 -e ~/grassdata/epsg4647_openNRW/
+# grass78 -c epsg:4647 -e ~/grassdata/openNRW_epsg4647/
 #
 ####
 # 
 # for all subsequent uses, start GRASS GIS for the DGM session:
-# grass76 ~/grassdata/epsg4647_openNRW/PERMANENT/
+# grass78 ~/grassdata/openNRW_epsg4647/PERMANENT/
 
 # debug
 # zip=dgm1_05154020_Issum_EPSG4647_XYZ.zip
