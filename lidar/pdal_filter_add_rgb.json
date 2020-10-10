@@ -1,0 +1,20 @@
+{
+  "pipeline": [
+    "3dm_32_367_5620_1_nw.laz",
+    {
+      "type": "filters.colorization",
+      "raster": "dop10rgbi_32_367_5620_1_nw.jp2"
+    },
+    {
+      "type": "filters.range",
+      "limits": "Red[1:]"
+    },
+    {
+      "type": "writers.las",
+      "compression": "true",
+      "minor_version": "2",
+      "dataformat_id": "3",
+      "filename": "3dm_32_367_5620_1_nw_colorized.laz"
+    }
+  ]
+}

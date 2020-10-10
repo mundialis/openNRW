@@ -28,4 +28,6 @@
 ## Usage:
 # pdal pipeline --input pdal_filter_add_rgb.json 
 
-pdal pipeline --input $i
+# Setting the GDAL_CACHEMAX variable to a size larger than the TIFF file dramatically speeds up the color fetching
+export GDAL_CACHEMAX="70%"
+pdal pipeline $1
