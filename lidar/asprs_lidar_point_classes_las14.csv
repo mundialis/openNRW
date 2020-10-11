@@ -18,5 +18,5 @@ classification_value	Meaning	color	hex	rgb
 16	Wire-structure connector (e.g. Insulator)	pink	#FFC0CB	255,192,203
 17	Bridge deck	orange	#FFA500	255,165,0
 18	High noise	yellow	#FFFF00	255,255,0
-19-63	Reserved
-64-255	User definable
+19-63	Reserved			
+64-255	User definable			
