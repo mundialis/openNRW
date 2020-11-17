@@ -10,3 +10,5 @@ Scripts to process openNRW data (federal state of North-Rhine Westphalia, German
      * data download: https://www.opengeodata.nrw.de/produkte/geobasis/lbi/dop/
  * lidar: LiDAR Punktwolken, ~ 2 returns/sqm | LiDAR point clouds, originally provided as XYZ ASCII lists, ZIPed by municipality
      * data download: https://www.opengeodata.nrw.de/produkte/geobasis/hm/3dm_l_las/
+ * ndom: Normalisiertes Digitales Oberflächenmodell 50cm | normalized surface model, provided as GeoTIFF
+     * data download: https://www.opengeodata.nrw.de/produkte/geobasis/hm/ndom50_tiff/ndom50_tiff/
