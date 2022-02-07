@@ -2,7 +2,7 @@
 
 ############################################################################
 #
-# NAME:         openNRW_unpack_DOP10.sh
+# NAME:         03_openNRW_unpack_DOP10.sh
 #
 # AUTHOR(S):    Markus Neteler <neteler at mundialis.de>
 #               mundialis GmbH & Co. KG, Bonn
@@ -15,7 +15,7 @@
 #                orig:   dop_05974044_Warstein_EPSG25832_JPEG2000.zip  /  2A_dop10rgbi_32458_5698_1_nw.jp2
 #                result: dop_05974044_2A_dop10rgbi_32458_5698_1.jp2
 # 
-# COPYRIGHT:    (C) 2018 by Markus Neteler, mundialis
+# COPYRIGHT:    (C) 2018-2022 by Markus Neteler, mundialis
 #
 # REQUIREMENTS: 7z
 #               to install: apt-get install p7zip-full p7zip-rar -y

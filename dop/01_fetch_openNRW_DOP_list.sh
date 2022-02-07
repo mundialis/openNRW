@@ -2,7 +2,7 @@
 
 ############################################################################
 #
-# NAME:        fetch_openNRW_DOP_list.sh
+# NAME:         01_fetch_openNRW_DOP_list.sh
 #
 # AUTHOR(S):    Markus Neteler <neteler at mundialis.de>
 #               mundialis GmbH & Co. KG, Bonn
@@ -15,7 +15,7 @@
 #
 # Data source:  https://www.opengeodata.nrw.de/produkte/geobasis/dop/dop/
 #
-# COPYRIGHT:    (C) 2018-2019 by Markus Neteler, mundialis
+# COPYRIGHT:    (C) 2018-2022 by Markus Neteler, mundialis
 #
 # REQUIREMENTS: lynx, gdal, gzip, sed
 #
@@ -32,12 +32,21 @@
 ############################################################################
 
 # Usage:
-#   sh fetch_openNRW_DOP_list.sh
+#   sh 01_fetch_openNRW_DOP_list.sh
 # Output:
-#   fetch_DOP10.sh
+#   02_fetch_DOP10.sh
 ########################################
+# Digitale Orthophotos (10-fache Kompression) - Paketierung: Gemeinden
+URL=https://www.opengeodata.nrw.de/produkte/geobasis/lusat/dop/dop_jp2_f10_paketiert/
 
-lynx -dump -nonumbers -listonly https://www.opengeodata.nrw.de/produkte/geobasis/dop/dop/ | grep www.opengeodata.nrw.de/produkte/geobasis | grep EPSG25832_JPEG2000.zip > opengeodata_nrw_dop10_URLs.csv
+#### check if we have lynx tool
+if [ ! -x "`which lynx`" ] ; then
+    echo "lynx required, please install lynx first"
+    exit 1
+fi
+
+# Example: https://www.opengeodata.nrw.de/produkte/geobasis/lusat/dop/dop_jp2_f10_paketiert/dop_05314000_Bonn_EPSG25832_JPEG2000.zip
+lynx -dump -nonumbers -listonly $URL | grep www.opengeodata.nrw.de/produkte/geobasis | grep EPSG25832_JPEG2000.zip > opengeodata_nrw_dop10_URLs.csv
 
 rm -f opengeodata_nrw_dop10_tiles.csv
 for ZIP in `cat opengeodata_nrw_dop10_URLs.csv` ; do
@@ -50,7 +59,8 @@ cat opengeodata_nrw_dop10_tiles.tmp | grep "       /vsizip/vsicurl" > opengeodat
 rm -f opengeodata_nrw_dop10_tiles.tmp
 
 # generate download script
-cat opengeodata_nrw_dop10_URLs.csv | sed 's+^+wget -c +g' > fetch_DOP10.sh
+cat opengeodata_nrw_dop10_URLs.csv | sed 's+^+wget -c +g' > 02_fetch_DOP10.sh
+chmod a+x 02_fetch_DOP10.sh
 
 # compress DOP URLs list
 gzip opengeodata_nrw_dop10_URLs.csv
