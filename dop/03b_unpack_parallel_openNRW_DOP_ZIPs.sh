@@ -2,7 +2,7 @@
 
 ############################################################################
 #
-# NAME:         unpack_parallel_openNRW_DOP_ZIPs.sh
+# NAME:         03b_unpack_parallel_openNRW_DOP_ZIPs.sh
 #
 # AUTHOR(S):    Markus Neteler <neteler at mundialis.de>
 #               mundialis GmbH & Co. KG, Bonn
@@ -14,7 +14,7 @@
 #
 # Data source:  https://www.opengeodata.nrw.de/produkte/geobasis/dom/dom1l/
 #
-# COPYRIGHT:    (C) 2019 by Markus Neteler, mundialis
+# COPYRIGHT:    (C) 2019-2022 by Markus Neteler, mundialis
 #
 # REQUIREMENTS: GNU parallel
 #                 dnf install -y parallel
@@ -33,9 +33,14 @@
 ############################################################################
 
 # Usage:
-#   bash unpack_parallel_openNRW_DOP_ZIPs.sh
+#   bash 03b_unpack_parallel_openNRW_DOP_ZIPs.sh
 ########################################
 
+#### check if we have GNU parallel tools
+if [ ! -x "`which sem`" ] ; then
+    echo "GNU parallel tools required, please install 'parallel' first"
+    exit 1
+fi
 
 # get number of processors of current machine
 MYNPROC=`getconf _NPROCESSORS_ONLN`
