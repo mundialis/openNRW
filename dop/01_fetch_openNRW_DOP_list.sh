@@ -11,7 +11,7 @@
 # PURPOSE:      Fetch list of openNRW DOP 10cm imagery ZIP files
 #               - digital orthophoto tiles of North-Rhine Westphalia, Germany
 #               The overall size of all openNRW DOP10 ZIP files is 1.4 TB
-#               Generates: fetch_DOP10.sh
+#               Generates: 02_fetch_DOP10.sh
 #
 # Data source:  https://www.opengeodata.nrw.de/produkte/geobasis/dop/dop/
 #
@@ -59,8 +59,8 @@ cat opengeodata_nrw_dop10_tiles.tmp | grep "       /vsizip/vsicurl" > opengeodat
 rm -f opengeodata_nrw_dop10_tiles.tmp
 
 # generate download script
-cat opengeodata_nrw_dop10_URLs.csv | sed 's+^+wget -c +g' > 02_fetch_DOP10.sh
-chmod a+x 02_fetch_DOP10.sh
+cat opengeodata_nrw_dop10_URLs.csv | sed 's+^+wget -c +g' > 02_fetch_DOP10_ZIPs.sh
+chmod a+x 02_fetch_DOP10_ZIPs.sh
 
 # compress DOP URLs list
 gzip opengeodata_nrw_dop10_URLs.csv
@@ -72,10 +72,10 @@ echo "Generated <opengeodata_nrw_dop10_tiles.csv.gz>"
 
 
 
-echo "Single tile import: Import into GRASS GIS with, e.g.:
-r.import input=/vsizip/vsicurl/https://www.opengeodata.nrw.de/produkte/geobasis/dop/dop/dop_05562014_Gladbeck_EPSG25832_JPEG2000.zip/0E_dop10rgbi_32360_5718_1_nw.jp2 output=0E_dop10rgbi_32360_5718_1_nw"
+echo "Single DOP10 tile import: Import into GRASS GIS with, e.g.:
+r.import input=/vsicurl/https://www.opengeodata.nrw.de/produkte/geobasis/dop/dop/dop_05562014_Gladbeck_EPSG25832_JPEG2000.zip/0E_dop10rgbi_32360_5718_1_nw.jp2 output=0E_dop10rgbi_32360_5718_1_nwi resolution=value resolution_value=0.10"
 echo ""
 echo "For mosaics, better generate a VRT mosaic first (using <gdalbuildvrt ...>), then import the VRT file."
 echo ""
-echo "For a tile index, run
+echo "For a openNRW DOP10 tile index, run
 gdaltindex -f GPKG openNRW_DOP10_tileindex.gpkg --optfile opengeodata_nrw_dop10_tiles.csv"
