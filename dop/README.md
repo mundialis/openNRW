@@ -10,7 +10,7 @@ Overviews:
 Download scripts:
 
  * `01_fetch_openNRW_DOP_list.sh`: Fetch list of openNRW DOP 10cm imagery ZIP files
-   * it generates: `02_fetch_DOP10.sh` to run the imagery download with `wget`. Note: The overall size of all openNRW DOP10 ZIP files is ~1.4 TB
+   * it generates: `02_fetch_DOP10_JP2s.sh` to run the imagery download with `wget`. Note: The overall size of all openNRW DOP10 files is > 1.4 TB
 
 Preprocessing:
 

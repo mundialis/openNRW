@@ -8,9 +8,9 @@
 #               mundialis GmbH & Co. KG, Bonn
 #               https://www.mundialis.de
 #
-# PURPOSE:      Fetch list of openNRW DOP 10cm imagery ZIP files
+# PURPOSE:      Fetch list of openNRW DOP 10cm imagery files
 #               - digital orthophoto tiles of North-Rhine Westphalia, Germany
-#               The overall size of all openNRW DOP10 ZIP files is 1.4 TB
+#               The overall size of all openNRW DOP10 files is > 1.4 TB
 #               Generates: 02_fetch_DOP10.sh
 #
 # Data source:  https://www.opengeodata.nrw.de/produkte/geobasis/dop/dop/
@@ -36,8 +36,8 @@
 # Output:
 #   02_fetch_DOP10.sh
 ########################################
-# Digitale Orthophotos (10-fache Kompression) - Paketierung: Gemeinden
-URL=https://www.opengeodata.nrw.de/produkte/geobasis/lusat/dop/dop_jp2_f10_paketiert/
+# Digitale Orthophotos (10-fache Kompression) - Paketierung: Einzelkacheln
+URL=https://www.opengeodata.nrw.de/produkte/geobasis/lusat/dop/dop_jp2_f10/
 
 #### check if we have lynx tool
 if [ ! -x "`which lynx`" ] ; then
@@ -45,26 +45,27 @@ if [ ! -x "`which lynx`" ] ; then
     exit 1
 fi
 
-# Example: https://www.opengeodata.nrw.de/produkte/geobasis/lusat/dop/dop_jp2_f10_paketiert/dop_05314000_Bonn_EPSG25832_JPEG2000.zip
-lynx -dump -nonumbers -listonly $URL | grep www.opengeodata.nrw.de/produkte/geobasis | grep EPSG25832_JPEG2000.zip > opengeodata_nrw_dop10_ZIPs_URLs.csv
+# overall: 35860 DOPs
+# Example: https://www.opengeodata.nrw.de/produkte/geobasis/lusat/dop/dop_jp2_f10/dop10rgbi_32_363_5619_1_nw.jp2
+lynx -dump -nonumbers -listonly $URL | grep www.opengeodata.nrw.de/produkte/geobasis/lusat/dop/ | grep 'jp2$' | head -n 4 > opengeodata_nrw_dop10_URLs.csv
 
 rm -f opengeodata_nrw_dop10_tiles.csv
-for ZIP in `cat opengeodata_nrw_dop10_ZIPs_URLs.csv` ; do
+for JP2 in `cat opengeodata_nrw_dop10_URLs.csv` ; do
   # amusingly, the output is on stderr! so we redirect it... but at the end of the line
-  gdalinfo -nofl -norat "/vsizip/vsicurl/$ZIP" >> opengeodata_nrw_dop10_tiles.tmp 2>&1
+  gdalinfo -nofl -norat "/vsicurl/$JP2" >> opengeodata_nrw_dop10_tiles.tmp 2>&1
 done
 
 # wipe out some rubbish
-cat opengeodata_nrw_dop10_tiles.tmp | grep "       /vsizip/vsicurl" > opengeodata_nrw_dop10_tiles.csv
+cat opengeodata_nrw_dop10_tiles.tmp | grep "       /vsicurl" > opengeodata_nrw_dop10_tiles.csv
 rm -f opengeodata_nrw_dop10_tiles.tmp
 
 # generate download script
-cat opengeodata_nrw_dop10_ZIPs_URLs.csv | sed 's+^+wget -c +g' > 02_fetch_DOP10_ZIPs.sh
-chmod a+x 02_fetch_DOP10_ZIPs.sh
+cat opengeodata_nrw_dop10_URLs.csv | sed 's+^+wget -c +g' > 02_fetch_DOP10_JP2s.sh
+chmod a+x 02_fetch_DOP10_JP2s.sh
 
 # compress DOP URLs list
-gzip opengeodata_nrw_dop10_ZIPs_URLs.csv
-echo "Generated <opengeodata_nrw_dop10_ZIPs_URLs.csv.gz>"
+gzip opengeodata_nrw_dop10_URLs.csv
+echo "Generated <opengeodata_nrw_dop10_URLs.csv.gz>"
 
 # compress DOP tiles list
 gzip opengeodata_nrw_dop10_tiles.csv
