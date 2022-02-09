@@ -57,11 +57,13 @@ chmod a+x 02_fetch_DOP10_JP2s.sh
 gzip opengeodata_nrw_dop10_URLs.csv
 echo "Generated <opengeodata_nrw_dop10_URLs.csv.gz>"
 
-
-echo "Single DOP10 tile import: Import into GRASS GIS with, e.g.:
-r.import input=/vsicurl/https://www.opengeodata.nrw.de/produkte/geobasis/dop/dop/dop_05562014_Gladbeck_EPSG25832_JPEG2000.zip/0E_dop10rgbi_32360_5718_1_nw.jp2 output=0E_dop10rgbi_32360_5718_1_nwi resolution=value resolution_value=0.10"
+echo "
+Some notes:
+"
+echo "GRASS GIS: single DOP10 file import (10 cm resolution):
+r.import input=/vsicurl/https://www.opengeodata.nrw.de/produkte/geobasis/lusat/dop/dop_jp2_f10/dop10rgbi_32_363_5619_1_nw.jp2 output=dop10rgbi_32_363_5619_1_nw resolution=value resolution_value=0.10"
 echo ""
 echo "For mosaics, better generate a VRT mosaic first (using <gdalbuildvrt ...>), then import the VRT file."
 echo ""
-echo "For a openNRW DOP10 tile index, run
+echo "For an openNRW DOP10 tile index, run
 gdaltindex -f GPKG openNRW_DOP10_tileindex.gpkg --optfile opengeodata_nrw_dop10_URLs.csv"
