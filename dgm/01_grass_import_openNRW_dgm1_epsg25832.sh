@@ -116,13 +116,16 @@ for zip in $(ls dgm*_EPSG25832_XYZ.zip) ; do
         cat $dgm | tr -s ' ' ' ' | r.in.xyz input=- separator=space method=mean output=$name
         # shift from EPSG:4647 to EPSG:25832, adjusting false easting
         r.region map=$name e=e-32000000 w=w-32000000
+        # shift raster for half pixel because in the XYZ file the left lower corner is given
+        g.region n=n+0.5 s=s-0.5 w=w-0.5 e=e+0.5 -p
+        r.region map=$name -c
     done  # end of tile loop
 
     # move out of city ZIP file
     cd ..
     # import done, unmount ZIP file
     fusermount -u ${ZIPDIR} && rmdir ${ZIPDIR}
-  
+
     # generate list of all tiles which are now in the GRASS GIS location/mapset
     TILELIST=$(g.list raster pattern="dgm*" sep=comma)
     # set computational region to all tiles as prep for overall DGM of city
@@ -146,7 +149,7 @@ for zip in $(ls dgm*_EPSG25832_XYZ.zip) ; do
     g.remove raster pattern="dgm*" -f
 
     # at this stage the mapset should be empty and the zip file disconnected - cleaned for the next loop cycle...
-  
+
 done # end of openNRW city loop ("Paketierung: Gemeinden")
 
 #restore user mask if it was present:
