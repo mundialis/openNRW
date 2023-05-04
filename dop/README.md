@@ -16,3 +16,5 @@ Preprocessing:
 
  * `03a_openNRW_unpack_DOP10.sh`: Sequentially unpacks openNRW DOP imagery ZIP files into flat directory but with optimized JP2 file names (Note: simple "flat style" unpacking would fail since identical JP2 names exist in multiple openNRW DOP ZIP files)
  * `03b_unpack_parallel_openNRW_DOP_ZIPs.sh`: Run *n* DOP10 unzip jobs concurrently in the background (using GNU parallel)
+
+Tile index is stored in [mundialis/tile-indices repo](https://github.com/mundialis/tile-indices/blob/main/DOP/NW/openNRW_DOP10_tileindex.gpkg.gz)
