@@ -2,8 +2,8 @@ Scripts to process openNRW data: Digitales Orthophoto, R-G-B-NIR, 10cm resolutio
 
 Overviews:
 
- * product description: https://www.bezreg-koeln.nrw.de/brk_internet/geobasis/luftbildinformationen/aktuell/digitale_orthophotos/
- * map of flight dates (Befliegungsdatum): https://www.tim-online.nrw.de/tim-online2/uebersicht.html?thema=dop
+ * product description: https://www.bezreg-koeln.nrw.de/geobasis-nrw/produkte-und-dienste/luftbild-und-satellitenbildinformationen
+ * map of flight dates (Befliegungsdatum): https://www.bezreg-koeln.nrw.de/geobasis-nrw/produkte-und-dienste/luftbild-und-satellitenbildinformationen/bildflugnachweis
  * data: DOP - Digitales Orthophoto, 10cm, R-G-B-NIR | digital orthophotos, provided as JP2000, ZIPed by municipality
      * data download: https://www.opengeodata.nrw.de/produkte/geobasis/lusat/dop/
 
