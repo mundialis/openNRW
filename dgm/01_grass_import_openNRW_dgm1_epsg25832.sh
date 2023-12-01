@@ -117,7 +117,8 @@ for zip in $(ls dgm*_EPSG25832_XYZ.zip) ; do
         # shift from EPSG:4647 to EPSG:25832, adjusting false easting
         r.region map=$name e=e-32000000 w=w-32000000
         # shift raster for half pixel because in the XYZ file the left lower corner is given
-        g.region n=n+0.5 s=s-0.5 w=w-0.5 e=e+0.5 -p
+        g.region rast=$name 
+        g.region n=n+0.5 s=s+0.5 w=w+0.5 e=e+0.5 -p
         r.region map=$name -c
     done  # end of tile loop
 
