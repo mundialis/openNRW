@@ -13,5 +13,5 @@ Preprocessing:
 
 Postprocessing (example for Bonn):
 
-* `02_dgm1_extract_bonn_DEM_mosaik_procedure.sh`: Script to mosaik all openNRW dgm1 tiles which cover the city of Bonn (adapt to your needs)
+* `02_dgm1_extract_bonn_DEM_mosaik_procedure.sh`: Script to mosaic all openNRW dgm1 tiles which cover the city of Bonn (adapt to your needs)
 
