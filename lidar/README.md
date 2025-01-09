@@ -1,7 +1,7 @@
 ## Scripts to process openNRW LiDAR data
 
  * lidar: LiDAR point clouds provided in LAZ format
-     * Overview: https://www.bezreg-koeln.nrw.de/brk_internet/geobasis/hoehenmodelle/3d-messdaten/index.html
+     * Overview: https://www.bezreg-koeln.nrw.de/geobasis-nrw/produkte-und-dienste/hoehenmodelle/3d-messdaten
      * Flight plan: https://www.tim-online.nrw.de/tim-online2/uebersicht.html?thema=dhm
      * Format: LAS Version 1.2, PDRF 1: https://www.bezreg-koeln.nrw.de/brk_internet/geobasis/hoehenmodelle/nutzerinformationen.pdf
      * LAS 1.2 classes: see table in https://www.bezreg-koeln.nrw.de/brk_internet/geobasis/hoehenmodelle/nutzerinformationen.pdf
