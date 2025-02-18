@@ -1,6 +1,6 @@
 # openNRW
 Scripts to process openNRW data (federal state of North-Rhine Westphalia, Germany)
- * Overview: https://www.bezreg-koeln.nrw.de/brk_internet/geobasis/
+ * Overview: https://www.bezreg-koeln.nrw.de/geobasis-nrw
  * Data download: https://www.opengeodata.nrw.de/produkte/geobasis/
 
 # Scripts provided here:
