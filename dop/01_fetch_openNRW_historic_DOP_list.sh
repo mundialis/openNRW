@@ -42,7 +42,7 @@ URL=https://www.opengeodata.nrw.de/produkte/geobasis/lusat/hist/hist_dop/hist_do
 
 #### check if year set
 if [ $# -ne 1 ] ; then
-    echo "You must parse the historic year, which should be processed."
+    echo "You must provide the historic year, which should be processed."
     exit 1
 fi
 
