@@ -47,7 +47,7 @@ fi
 
 # overall: 35860 DOPs
 # Example: https://www.opengeodata.nrw.de/produkte/geobasis/lusat/akt/dop/dop_jp2_f10/dop10rgbi_32_363_5619_1_nw.jp2
-lynx -dump -nonumbers -listonly $URL | grep https://www.opengeodata.nrw.de/produkte/geobasis/lusat/akt/dop | grep 'jp2$' | sed 's+^+/vsicurl/+g' > opengeodata_nrw_dop10_URLs.csv
+lynx -dump -nonumbers -listonly $URL | grep www.opengeodata.nrw.de/produkte/geobasis/lusat/akt/dop | grep 'jp2$' | sed 's+^+/vsicurl/+g' > opengeodata_nrw_dop10_URLs.csv
 
 # generate download script
 cat opengeodata_nrw_dop10_URLs.csv | sed 's+^+wget -c +g' > 02_fetch_DOP10_JP2s.sh
