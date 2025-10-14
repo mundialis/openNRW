@@ -36,13 +36,20 @@
 # Output:
 #   02_fetch_DOP10_JP2s.sh
 ########################################
+
 YEAR=$1
-# Digitale Orthophotos (10-fache Kompression) - Paketierung: Einzelkacheln
-URL=https://www.opengeodata.nrw.de/produkte/geobasis/lusat/hist/hist_dop/hist_dop_jp2_f10/hist_dop_${YEAR}/epsg_25832/
 
 #### check if year set
 if [ $# -ne 1 ] ; then
     echo "You must provide the historic year, which should be processed."
+    exit 1
+fi
+
+# Digitale Orthophotos (10-fache Kompression) - Paketierung: Einzelkacheln
+URL=https://www.opengeodata.nrw.de/produkte/geobasis/lusat/hist/hist_dop/hist_dop_jp2_f10/hist_dop_${YEAR}/epsg_25832/
+
+if ! wget --spider -q $URL; then
+    echo "URL $URL does not exist. Note that EPSG:25832 is only used from 2010 onwards, for earlier years it's EPSG:31466 and EPSG:31467"
     exit 1
 fi
 
