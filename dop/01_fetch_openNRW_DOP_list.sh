@@ -13,7 +13,7 @@
 #               The overall size of all openNRW DOP10 files is > 1.4 TB
 #               Generates: 02_fetch_DOP10.sh
 #
-# Data source:  https://www.opengeodata.nrw.de/produkte/geobasis/dop/dop/
+# Data source:  https://www.opengeodata.nrw.de/produkte/geobasis/lusat/akt/dop/dop_jp2_f10/
 #
 # COPYRIGHT:    (C) 2018-2022 by Markus Neteler, mundialis
 #
@@ -37,7 +37,7 @@
 #   02_fetch_DOP10.sh
 ########################################
 # Digitale Orthophotos (10-fache Kompression) - Paketierung: Einzelkacheln
-URL=https://www.opengeodata.nrw.de/produkte/geobasis/lusat/dop/dop_jp2_f10/
+URL=https://www.opengeodata.nrw.de/produkte/geobasis/lusat/akt/dop/dop_jp2_f10/
 
 #### check if we have lynx tool
 if [ ! -x "`which lynx`" ] ; then
@@ -46,8 +46,8 @@ if [ ! -x "`which lynx`" ] ; then
 fi
 
 # overall: 35860 DOPs
-# Example: https://www.opengeodata.nrw.de/produkte/geobasis/lusat/dop/dop_jp2_f10/dop10rgbi_32_363_5619_1_nw.jp2
-lynx -dump -nonumbers -listonly $URL | grep www.opengeodata.nrw.de/produkte/geobasis/lusat/dop/ | grep 'jp2$' | sed 's+^+/vsicurl/+g' > opengeodata_nrw_dop10_URLs.csv
+# Example: https://www.opengeodata.nrw.de/produkte/geobasis/lusat/akt/dop/dop_jp2_f10/dop10rgbi_32_363_5619_1_nw.jp2
+lynx -dump -nonumbers -listonly $URL | grep www.opengeodata.nrw.de/produkte/geobasis/lusat/akt/dop | grep 'jp2$' | sed 's+^+/vsicurl/+g' > opengeodata_nrw_dop10_URLs.csv
 
 # generate download script
 cat opengeodata_nrw_dop10_URLs.csv | sed 's+^+wget -c +g' > 02_fetch_DOP10_JP2s.sh
@@ -61,7 +61,7 @@ echo "
 Some notes:
 "
 echo "GRASS GIS: single DOP10 file import (10 cm resolution):
-r.import input=/vsicurl/https://www.opengeodata.nrw.de/produkte/geobasis/lusat/dop/dop_jp2_f10/dop10rgbi_32_363_5619_1_nw.jp2 output=dop10rgbi_32_363_5619_1_nw resolution=value resolution_value=0.10"
+r.import input=/vsicurl/https://www.opengeodata.nrw.de/produkte/geobasis/lusat/akt/dop/dop_jp2_f10/dop10rgbi_32_363_5619_1_nw.jp2 output=dop10rgbi_32_363_5619_1_nw resolution=value resolution_value=0.10"
 echo ""
 echo "For mosaics, better generate a VRT mosaic first (using <gdalbuildvrt ...>), then import the VRT file."
 echo ""
